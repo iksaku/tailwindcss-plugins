@@ -1,0 +1,5 @@
+.github/
+__tests__/
+jest/
+.gitignore
+yarn-error.log

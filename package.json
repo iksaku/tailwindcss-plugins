@@ -1,0 +1,23 @@
+{
+  "name": "@iksaku/tailwindcss-plugins",
+  "version": "1.0.0",
+  "description": "Personal collection of TailwindCSS plugins",
+  "main": "index.js",
+  "repository": "https://github.com/iksaku/tailwindcss-plugins",
+  "author": "Jorge González",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "jest": "^25.4.0",
+    "jest-matcher-css": "^1.1.0",
+    "postcss": "^7.0.27",
+    "tailwindcss": "^1.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest/customMatchers.js"
+    ]
+  }
+}
