@@ -3,6 +3,15 @@
 This is a personal collection of [TailwindCSS]() plugins that I use on many of my projects.
 
 
+## Table of Contents
+
+- [Installation](#instalation)
+- [Usage](#usage)
+- [Plugins](#plugins)
+    - [`border-x`, `border-y` Utilities](#border-x-border-y-utilities)
+    - [`hocus:` Variant](#hocus-variant)
+
+
 ## Instalation
 
 ```cli
