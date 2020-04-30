@@ -10,6 +10,7 @@ This is a personal collection of [TailwindCSS]() plugins that I use on many of m
 - [Plugins](#plugins)
     - [`border-x`, `border-y` Utilities](#border-x-border-y-utilities)
     - [`hocus:` Variant](#hocus-variant)
+    - [`.markdown` Components](#markdown-components)
 
 
 ## Instalation
@@ -157,3 +158,12 @@ That will generate the following output:
 }
 ```
 As you can see, we could simplify the use of `hover:text-red focus:text-red` to `hocus:text-red`
+
+## `.markdown` Components
+This plugin will generate specific classes for rendering Markdown-like text, inspired in Github's
+Markdown styles. You can use this by using the `.markdown` class in your HTML file:
+```html
+<article class=".markdown">
+    <!-- Content -->
+</article>
+```

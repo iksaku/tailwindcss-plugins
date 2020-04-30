@@ -3,14 +3,13 @@ const tailwindcss = require('tailwindcss')
 
 require('tailwindcss/defaultConfig')
 
-module.exports = (plugins, config = {}) =>
-    postcss(
+module.exports = async (plugins, config = {}, tailwindGenerator = '@tailwind utilities') => {
+    const result = await postcss(
         tailwindcss({
             plugins: plugins,
             ...{ ...{ corePlugins: false }, ...config }
         })
-    )
-        .process('@tailwind utilities', { from: undefined })
-        .then(result => {
-            return result.css
-        })
+    ).process(tailwindGenerator, { from: undefined })
+    
+    return result.css
+}
