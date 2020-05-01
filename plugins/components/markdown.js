@@ -52,13 +52,13 @@ module.exports = plugin(({ addComponents, theme }) => {
         code: {
             fontSize: theme('fontSize.sm'),
             borderRadius: theme('borderRadius.lg'),
-            '-webkit-overflow-scrolling': 'touch'
-        },
+            '-webkit-overflow-scrolling': 'touch',
 
-        '@media (prefers-color-scheme: dark)': {
-            '&': {
-                borderWidth: theme('borderWidth.default'),
-                borderColor: theme('colors.gray.600')
+            '@media (prefers-color-scheme: dark)': {
+                '&': {
+                    borderWidth: theme('borderWidth.default'),
+                    borderColor: theme('colors.gray.600')
+                }
             }
         }
     }
