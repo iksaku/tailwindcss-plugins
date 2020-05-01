@@ -3,6 +3,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = plugin(({ addComponents, theme }) => {
     const base = {
         fontSize: theme('fontSize.lg'),
+        fontFamily: theme('fontFamily.sans').join(', '),
         lineHeight: theme('lineHeight.snug'),
 
         '&:first-child': {
@@ -13,7 +14,7 @@ module.exports = plugin(({ addComponents, theme }) => {
         },
     }
     const code = {
-        fontFamily: theme('fontFamily.mono'),
+        fontFamily: theme('fontFamily.mono').join(', '),
         backgroundColor: theme('colors.gray.200'),
         borderRadius: theme('borderRadius.default'),
         fontSize: '.9rem',
@@ -26,8 +27,9 @@ module.exports = plugin(({ addComponents, theme }) => {
         }
     }
     const p = {
-        fontFamily: theme('fontFamily.sans'),
         marginBottom: theme('spacing.4'),
+
+        code
     }
     const a = {
         cursor: 'pointer',
@@ -118,7 +120,9 @@ module.exports = plugin(({ addComponents, theme }) => {
                 svg: {
                     fontSize: theme('fontSize.sm')
                 }
-            }
+            },
+
+            code
         },
 
         'h1,h2': {
@@ -160,7 +164,6 @@ module.exports = plugin(({ addComponents, theme }) => {
     addComponents({
         '.markdown': {
             ...base,
-            code,
             p,
             a,
             pre,
