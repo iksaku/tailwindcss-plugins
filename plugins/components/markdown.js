@@ -1,15 +1,17 @@
 const plugin = require('tailwindcss/plugin')
 
 module.exports = plugin(({ addComponents, theme }) => {
+    const darkable = 'dark' in theme('screens', {})
+
     const base = {
         fontSize: theme('fontSize.lg'),
         fontFamily: theme('fontFamily.sans').join(', '),
         lineHeight: theme('lineHeight.snug'),
 
-        '&:first-child': {
+        '& :first-child': {
             marginTop: '0 !important'
         },
-        '&:last-child': {
+        '& :last-child': {
             marginBottom: '0 !important'
         },
     }
@@ -20,7 +22,7 @@ module.exports = plugin(({ addComponents, theme }) => {
         fontSize: '.9rem',
         padding: '.15rem .3rem',
 
-        '@media (prefers-color-scheme: dark)': {
+        '@media (prefers-color-scheme: dark)': !darkable ? {} : {
             '&': {
                 backgroundColor: theme('colors.gray.700')
             }
@@ -54,7 +56,7 @@ module.exports = plugin(({ addComponents, theme }) => {
             borderRadius: theme('borderRadius.lg'),
             '-webkit-overflow-scrolling': 'touch',
 
-            '@media (prefers-color-scheme: dark)': {
+            '@media (prefers-color-scheme: dark)': !darkable ? {} : {
                 '&': {
                     borderWidth: theme('borderWidth.default'),
                     borderColor: theme('colors.gray.600')
@@ -107,7 +109,7 @@ module.exports = plugin(({ addComponents, theme }) => {
                 transition: theme('transitionProperty.colors'),
                 transitionDuration: theme('transitionDuration.100'),
 
-                '@media (prefers-color-scheme: dark)': {
+                '@media (prefers-color-scheme: dark)': !darkable ? {} : {
                     '&': {
                         textColor: theme('colors.gray.500')
                     }
@@ -129,7 +131,7 @@ module.exports = plugin(({ addComponents, theme }) => {
             borderBottomWidth: theme('borderWidth.default'),
             borderColor: theme('colors.gray.400'),
 
-            '@media (prefers-color-scheme: dark)': {
+            '@media (prefers-color-scheme: dark)': !darkable ? {} : {
                 '&': {
                     borderColor: theme('colors.gray.600')
                 }
