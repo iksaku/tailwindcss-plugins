@@ -91,10 +91,10 @@ module.exports = plugin(({ addComponents, theme }) => {
             }
         },
         ol: {
-            listStyleType: 'list-decimal'
+            listStyleType: 'decimal'
         },
         ul: {
-            listStyleType: 'list-disc'
+            listStyleType: 'disc'
         }
     }
     const headings = {
