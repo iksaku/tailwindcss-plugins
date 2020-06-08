@@ -8,10 +8,10 @@ module.exports = plugin(({ addComponents, theme }) => {
         fontFamily: theme('fontFamily.sans').join(', '),
         lineHeight: theme('lineHeight.snug'),
 
-        '& :first-child': {
+        '& > :first-child': {
             marginTop: '0 !important'
         },
-        '& :last-child': {
+        '& > :last-child': {
             marginBottom: '0 !important'
         },
     }
