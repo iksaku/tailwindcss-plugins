@@ -100,7 +100,6 @@ module.exports = plugin(({ addComponents, theme }) => {
     const headings = {
         'h1,h2,h3,h4,h5,h6': {
             fontWeight: theme('fontWeight.bold'),
-            paddingBottom: theme('spacing.3'),
             margin: `${theme('spacing.6')} 0 ${theme('spacing.4')} 0`,
 
             '.permalink': {
@@ -130,6 +129,7 @@ module.exports = plugin(({ addComponents, theme }) => {
         'h1,h2': {
             borderBottomWidth: theme('borderWidth.default'),
             borderColor: theme('colors.gray.400'),
+            paddingBottom: theme('spacing.3'),
 
             '@media (prefers-color-scheme: dark)': !darkable ? {} : {
                 '&': {
