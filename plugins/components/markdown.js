@@ -27,7 +27,7 @@ module.exports = plugin(({ addComponents, theme }) => {
             fontFamily: theme('fontFamily.mono').join(', '),
             backgroundColor: theme('colors.gray.200'),
             borderRadius: theme('borderRadius.default'),
-            fontSize: '.9rem',
+            fontSize: '80%',
             padding: '.15rem .3rem',
             verticalAlign: 'middle',
 
