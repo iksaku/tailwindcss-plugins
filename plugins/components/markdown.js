@@ -1,7 +1,15 @@
 const plugin = require('tailwindcss/plugin')
 
 module.exports = plugin(({ addComponents, theme }) => {
-    const darkable = 'dark' in theme('screens', {})
+    const ifDarkModeEnabled = styles => {
+        if (!('dark' in theme('screens', {}))) {
+            return {}
+        }
+
+        return {
+            '@media (prefers-color-scheme: dark)': styles
+        }
+    }
 
     const base = {
         fontSize: theme('fontSize.lg'),
@@ -14,24 +22,24 @@ module.exports = plugin(({ addComponents, theme }) => {
         '& > :last-child': {
             marginBottom: '0 !important'
         },
-    }
-    const code = {
-        fontFamily: theme('fontFamily.mono').join(', '),
-        backgroundColor: theme('colors.gray.200'),
-        borderRadius: theme('borderRadius.default'),
-        fontSize: '.9rem',
-        padding: '.15rem .3rem',
 
-        '@media (prefers-color-scheme: dark)': !darkable ? {} : {
-            '&': {
-                backgroundColor: theme('colors.gray.700')
-            }
+        ':not(pre) code': {
+            fontFamily: theme('fontFamily.mono').join(', '),
+            backgroundColor: theme('colors.gray.200'),
+            borderRadius: theme('borderRadius.default'),
+            fontSize: '.9rem',
+            padding: '.15rem .3rem',
+            verticalAlign: theme('verticalAlign.middle'),
+
+            ...ifDarkModeEnabled({
+                '&': {
+                    backgroundColor: theme('colors.gray.700')
+                }
+            })
         }
     }
     const p = {
         marginBottom: theme('spacing.4'),
-
-        code
     }
     const a = {
         cursor: 'pointer',
@@ -56,12 +64,12 @@ module.exports = plugin(({ addComponents, theme }) => {
             borderRadius: theme('borderRadius.lg'),
             '-webkit-overflow-scrolling': 'touch',
 
-            '@media (prefers-color-scheme: dark)': !darkable ? {} : {
+            ...ifDarkModeEnabled({
                 '&': {
                     borderWidth: theme('borderWidth.default'),
                     borderColor: theme('colors.gray.600')
                 }
-            }
+            })
         }
     }
     const lists = {
@@ -108,11 +116,11 @@ module.exports = plugin(({ addComponents, theme }) => {
                 transition: theme('transitionProperty.colors'),
                 transitionDuration: theme('transitionDuration.100'),
 
-                '@media (prefers-color-scheme: dark)': !darkable ? {} : {
+                ...ifDarkModeEnabled({
                     '&': {
                         textColor: theme('colors.gray.500')
                     }
-                },
+                }),
 
                 '&:hover,&:focus': {
                     textColor: theme('colors.blue.500')
@@ -122,8 +130,6 @@ module.exports = plugin(({ addComponents, theme }) => {
                     fontSize: theme('fontSize.sm')
                 }
             },
-
-            code
         },
 
         'h1,h2': {
@@ -131,11 +137,11 @@ module.exports = plugin(({ addComponents, theme }) => {
             borderColor: theme('colors.gray.400'),
             paddingBottom: theme('spacing.3'),
 
-            '@media (prefers-color-scheme: dark)': !darkable ? {} : {
+            ...ifDarkModeEnabled({
                 '&': {
                     borderColor: theme('colors.gray.600')
                 }
-            }
+            })
         },
 
         h1: {
