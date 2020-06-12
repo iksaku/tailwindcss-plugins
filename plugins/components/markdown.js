@@ -29,7 +29,7 @@ module.exports = plugin(({ addComponents, theme }) => {
             borderRadius: theme('borderRadius.default'),
             fontSize: '.9rem',
             padding: '.15rem .3rem',
-            verticalAlign: theme('verticalAlign.middle'),
+            verticalAlign: 'middle',
 
             ...ifDarkModeEnabled({
                 '&': {
