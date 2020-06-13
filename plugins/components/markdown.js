@@ -74,8 +74,8 @@ module.exports = plugin(({ addComponents, theme }) => {
     }
     const lists = {
         'ol,ul': {
-            listStylePosition: 'inside',
-            margin: `${theme('spacing.2')} 0 ${theme('spacing.2')} ${theme('spacing.4')}`,
+            listStylePosition: 'outside',
+            margin: `${theme('spacing.2')} ${theme('spacing.6')}`,
 
             li: {
                 'ol,ul': {
