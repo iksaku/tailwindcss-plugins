@@ -8,9 +8,14 @@ This is a personal collection of [TailwindCSS]() plugins that I use on many of m
 - [Installation](#instalation)
 - [Usage](#usage)
 - [Plugins](#plugins)
-    - [`border-x`, `border-y` Utilities](#border-x-border-y-utilities)
-    - [`hocus:` Variant](#hocus-variant)
-    - [`.markdown` Components](#markdown-components)
+    - [Base Styles](#base-styles)
+        - [Smooth Scrolling](#smooth-scrolling)
+    - [Components](#components)
+        - [`.markdown` Components](#markdown)
+    - [Utilities](#utilities)
+        - [`border-x`, `border-y` Utilities](#border-x-border-y)
+    - [Variants](#variants)
+        - [`hocus:` Variant](#hocus)
 
 
 ## Instalation
@@ -29,13 +34,12 @@ yarn add @iksaku/tailwindcss-plugins
 - Importing all plugins
     ```js
     // tailwind.config.js
-    const plugins = require('@iksaku/tailwindcss-plugins')
-
     module.exports = {
         //...
         plugins: [
-            //...
-            ...plugins
+            // Other plugins...
+
+            ...require('@iksaku/tailwindcss-plugins')
         ]
     }
     ```
@@ -43,13 +47,12 @@ yarn add @iksaku/tailwindcss-plugins
     Locate the desired plugin under `plugins/` and import it in your configuration file:
     ```js
     // tailwind.config.js
-    const borderXYPlugin = require('@iksaku/tailwindcss-plugins/plugins/utilities/borderXY')
-
     module.exports = {
         //...
         plugins: [
-            //...
-            borderXYPlugin
+            //Other plugins...
+
+            require('@iksaku/tailwindcss-plugins/plugins/utilities/borderXY')
         ]
     }
     ```
@@ -57,21 +60,49 @@ yarn add @iksaku/tailwindcss-plugins
 
 ## Plugins
 
-### `border-x`, `border-y` Utilities
+### Base Styles
 
-This plugin will generate two extra `border` class configurations: `border-x` and `border-y`. Those will also be generated with the same width configurations as specified in your configuration file:
+#### Smooth Scrolling
+This plugin will add the `scroll-behavior: smooth` rule to the base `html` style that is generated along with
+`@tailwind base`.
+
+You can learn more about [`scroll-behavior` rule on CSSTricks](https://css-tricks.com/almanac/properties/s/scroll-behavior/).
+
+### Components
+
+#### `.markdown`
+This plugin will generate specific classes for rendering Markdown-like text, inspired in Github's
+Markdown styles. You can use this by using the `.markdown` class in your HTML file:
+```html
+<article class="markdown p-4">
+    <!-- Content -->
+</article>
+```
+
+### Utilities
+
+#### `border-x`, `border-y`
+This plugin will generate two extra `border` class configurations: `border-x` and `border-y`.
+Those will also be generated with the same width configurations as specified in your configuration file:
 ```js
 // tailwind.config.js
-const borderXYPlugin = require('@iksaku/tailwindcss-plugins/plugins/utilities/borderXY')
-
 module.exports = {
+    theme: {
+        borderWidth: {
+            default: '1px',
+            '0': 0,
+            '2': '2px',
+            '4': '4px',
+            '8': '8px',
+        }
+    },
     plugins: [
-        borderXYPlugin
+        require('@iksaku/tailwindcss-plugins/plugins/utilities/borderXY')
     ]
 }
 ```
 
-Then, assuming you're using the [default `borderWidth` configuration](), the plugin will generate the following output:
+The plugin will generate the following output:
 ```css
 .border-x-0 {
     border-left-width: 0;
@@ -115,15 +146,14 @@ Then, assuming you're using the [default `borderWidth` configuration](), the plu
 }
 ```
 
+### Variants
 
-## `hocus:` Variant
-
-This plugin will make the `hocus` variant available for generation with your utilities, which allow utilities to target both `:hover` and `:focus` interactions with one class.
-For example, if you want a `.text-red` class to have a `hocus:` variant, you must register it in your config file and specify it under the `variants` section:
+#### `hocus:`
+This plugin will make the `hocus` variant available for generation with your utilities, which allow utilities to target
+both `:hover` and `:focus` interactions with one class. For example, if you want a `.text-red` class to have a `hocus:`
+variant, you must register it in your config file and specify it under the `variants` section:
 ```js
 // tailwind.config.js
-const hocusPlugin = require('@iksaku/tailwindcss-plugins/plugins/variants/hocus')
-
 module.exports = {
     theme: {
         textColor: {
@@ -134,7 +164,7 @@ module.exports = {
         textColor: ['hover', 'focus', 'hocus']
     },
     plugins: [
-        hocusPlugin
+        require('@iksaku/tailwindcss-plugins/plugins/variants/hocus')
     ]
 }
 ```
@@ -158,12 +188,3 @@ That will generate the following output:
 }
 ```
 As you can see, we could simplify the use of `hover:text-red focus:text-red` to `hocus:text-red`
-
-## `.markdown` Components
-This plugin will generate specific classes for rendering Markdown-like text, inspired in Github's
-Markdown styles. You can use this by using the `.markdown` class in your HTML file:
-```html
-<article class=".markdown">
-    <!-- Content -->
-</article>
-```
