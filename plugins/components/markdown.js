@@ -14,7 +14,6 @@ module.exports = plugin(({ addComponents, theme }) => {
     addComponents({
         '.markdown': {
             fontSize: theme('fontSize.lg'),
-            fontFamily: theme('fontFamily.sans').join(', '),
             lineHeight: theme('lineHeight.snug'),
 
             '& > :first-child': {
