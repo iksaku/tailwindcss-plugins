@@ -1,11 +1,11 @@
-const generateCSS = require('../../jest/generateCSS')
+const generateCSS = require('../jest/generateCSS')
 
 const plugins = [
-    require('../../plugins/components/markdown')
+    require('../src/markdown')
 ]
 
 test('it generates markdown component', async () => {
     const css = await generateCSS(plugins, {}, '@tailwind components')
 
-    return expect(css).toContain('.markdown')
+    expect(css).toMatch('.markdown')
 })

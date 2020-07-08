@@ -1,7 +1,7 @@
-const generateCSS = require('../../jest/generateCSS')
+const generateCSS = require('../jest/generateCSS')
 
 const plugins = [
-    require('../../plugins/utilities/borderXY')
+    require('../src/borderXY')
 ]
 
 test('it generates border-(x|y)', async () => {
@@ -11,7 +11,7 @@ test('it generates border-(x|y)', async () => {
         }
     })
 
-    return expect(css).toMatchCSS(`
+    expect(css).toMatchCSS(`
         .border-x-0 {
             border-left-width: 0;
             border-right-width: 0;
@@ -67,7 +67,7 @@ test('it generates custom width border-(x|y) with hover variant', async () => {
         }
     })
 
-    return expect(css).toMatchCSS(`
+    expect(css).toMatchCSS(`
         .border-x {
             border-left-width: 1px;
             border-right-width: 1px;

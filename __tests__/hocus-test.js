@@ -1,7 +1,7 @@
-const generateCSS = require('../../jest/generateCSS')
+const generateCSS = require('../jest/generateCSS')
 
 const plugins = [
-    require('../../plugins/variants/hocusVariant'),
+    require('../src/hocus'),
     ({ addUtilities, variants }) => {
         addUtilities({ '.visible': { visibility: 'visible' } }, variants('visibility'))
     }
@@ -14,7 +14,7 @@ test('it doesn\'t generate \'hocus\' variants', async () => {
         }
     })
     
-    return expect(css).toMatchCSS(`
+    expect(css).toMatchCSS(`
         .visible {
             visibility: visible;
         }
@@ -28,7 +28,7 @@ test('it generates \'hocus\' variants', async () => {
         }
     })
 
-    return expect(css).toMatchCSS(`
+    expect(css).toMatchCSS(`
         .visible {
             visibility: visible;
         }
