@@ -198,7 +198,11 @@ You can learn more about [`scroll-behavior` rule on CSSTricks](https://css-trick
 ### Inter Font Family
 This plugin will adjust Tailwind to add support for the [Inter Font Family](https://rsms.me/inter).
 It will add custom rules to Tailwind's Base Styles (via `@tailwind base`) and override the `.font-sans` class
-(via `@tailwind utilities`) to reflect Inter support. Enable this plugin by registering it in your config:
+(via `@tailwind utilities`) to reflect Inter support.
+
+**NOTE**: You still need to import Inter's fonts from either their own CDN or Google Fonts, or provide them yourself.
+
+Enable this plugin by registering it in your config:
 ```js
 // tailwind.config.js
 module.exports = {
