@@ -15,7 +15,10 @@ test('it generates Inter Family when there is no \'sans\' font family available 
     const css = await generateCSS(plugins, {
         corePlugins: ['fontFamily'],
         theme: {
-            fontFamily: {}
+            fontFamily: {},
+        },
+        variants: {
+            fontFamily: []
         }
     }, '@tailwind base; @tailwind utilities')
 
