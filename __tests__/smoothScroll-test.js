@@ -1,13 +1,13 @@
 const generateCSS = require('../jest/generateCSS')
 
 const plugins = [
-    require('../src/smoothScroll')
+  require('../plugins/smoothScroll')
 ]
 
 test('it adds scrolling-behavior to html', async () => {
-    const css = await generateCSS(plugins, {}, '@tailwind base')
+  const css = await generateCSS(plugins, {}, '@tailwind base')
 
-    expect(css).toMatchCSS(`
+  expect(css).toMatchCSS(`
         html {
             scroll-behavior: smooth
         }
