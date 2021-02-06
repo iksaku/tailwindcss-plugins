@@ -1,6 +1,6 @@
 {
   "name": "@iksaku/tailwindcss-plugins",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Personal collection of TailwindCSS plugins",
   "main": "index.js",
   "repository": "https://github.com/iksaku/tailwindcss-plugins",
@@ -12,8 +12,12 @@
   "devDependencies": {
     "jest": "^25.4.0",
     "jest-matcher-css": "^1.1.0",
-    "postcss": "^8.0",
-    "tailwindcss": "^2.0"
+    "postcss": "^8.0.0",
+    "tailwindcss": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@tailwindcss/typography": "^0.4.0",
+    "autoprefixer": "^10.0.0"
   },
   "jest": {
     "setupFilesAfterEnv": [

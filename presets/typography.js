@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 const shared = {
@@ -12,6 +13,10 @@ const shared = {
 }
 
 module.exports = {
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
+
   theme: {
     extend: {
       typography: theme => ({
