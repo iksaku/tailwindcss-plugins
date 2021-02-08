@@ -25,10 +25,10 @@ module.exports = {
             color: colors.coolGray['900'],
 
             a: {
-              color: colors.blue['900'],
+              color: colors.blue['700'],
               textDecoration: 'none',
               '&:hover,&:focus': {
-                color: colors.blue['700']
+                color: colors.blue['900']
               },
             },
 
