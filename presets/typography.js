@@ -2,13 +2,18 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 const shared = {
+  p: {
+    marginTop: defaultTheme.spacing[5],
+    marginBottom: defaultTheme.spacing[5]
+  },
   'h1,h2,h3,h4,h5,h6': {
-    marginBottom: defaultTheme.spacing[4]
+    marginTop: defaultTheme.spacing[8],
+    marginBottom: defaultTheme.spacing[3]
   },
   'h1,h2': {
     borderBottomWidth: defaultTheme.borderWidth.DEFAULT,
     borderColor: colors.coolGray['300'],
-    paddingBottom: defaultTheme.spacing[4],
+    paddingBottom: defaultTheme.spacing[3],
   }
 }
 
@@ -35,17 +40,17 @@ module.exports = {
             ...shared
           }
         },
-        'sm': {
+        sm: {
           css: {
             ...shared
           }
         },
-        'lg': {
+        lg: {
           css: {
             ...shared
           }
         },
-        'xl': {
+        xl: {
           css: {
             ...shared
           }
