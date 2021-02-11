@@ -18,10 +18,7 @@ module.exports = plugin(({ addBase, addUtilities, theme, variants }) => {
   const interIsIncluded = sans.includes('Inter')
 
   if (interIsIncluded) {
-    sans = sans.replace(
-      /["']?Inter["']?,? ?(.*)/g,
-      '$1'
-    )
+    sans = sans.replace(/["']?Inter["']?,? ?(.*)/g, '$1')
   }
 
   if (sans.length < 1) {
@@ -30,32 +27,33 @@ module.exports = plugin(({ addBase, addUtilities, theme, variants }) => {
     isInterOnly = true
   }
 
-  const baseStyles = {}, utilities = {}
+  const baseStyles = {},
+    utilities = {}
 
   if (!interIsIncluded || isInterOnly) {
     // By default, Tailwind adds its own 'sans' font families, but since we want Inter, we will override those.
     baseStyles['html'] = {
-      fontFamily: `"Inter", ${sans}`
+      fontFamily: `"Inter", ${sans}`,
     }
 
     // Override '.font-sans' class with Inter Family
     utilities['.font-sans'] = {
-      fontFamily: `"Inter", ${sans}`
+      fontFamily: `"Inter", ${sans}`,
     }
   }
 
   // Include support for 'Inter var' if browser supports font variations
   baseStyles['@supports (font-variation-settings: normal)'] = {
     html: {
-      fontFamily: `"Inter var", ${sans}`
-    }
+      fontFamily: `"Inter var", ${sans}`,
+    },
   }
 
   // Override '.font-sans' class with support for 'Inter var' if browser supports font variations
   utilities['@supports (font-variation-settings: normal)'] = {
     '.font-sans': {
-      fontFamily: `"Inter var", ${sans}`
-    }
+      fontFamily: `"Inter var", ${sans}`,
+    },
   }
 
   // Add root html support for Inter fonts

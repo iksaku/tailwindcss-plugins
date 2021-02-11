@@ -1,26 +1,28 @@
 const generateCSS = require('../jest/generateCSS')
 
-const plugins = [
-  require('../plugins/interFontFamily')
-]
+const plugins = [require('../plugins/interFontFamily')]
 
-test('it includes Inter Font Families in html with Tailwind\'s default Sans Families', async () => {
+test("it includes Inter Font Families in html with Tailwind's default Sans Families", async () => {
   const css = await generateCSS(plugins, {}, '@tailwind base')
 
   expect(css).toMatch('font-family: "Inter"')
   expect(css).toMatch('font-family: "Inter var"')
 })
 
-test('it generates Inter Family when there is no \'sans\' font family available in config', async () => {
-  const css = await generateCSS(plugins, {
-    corePlugins: ['fontFamily'],
-    theme: {
-      fontFamily: {},
+test("it generates Inter Family when there is no 'sans' font family available in config", async () => {
+  const css = await generateCSS(
+    plugins,
+    {
+      corePlugins: ['fontFamily'],
+      theme: {
+        fontFamily: {},
+      },
+      variants: {
+        fontFamily: [],
+      },
     },
-    variants: {
-      fontFamily: []
-    }
-  }, '@tailwind base; @tailwind utilities')
+    '@tailwind base; @tailwind utilities'
+  )
 
   expect(css).toMatchCSS(`
         html {
@@ -35,27 +37,31 @@ test('it generates Inter Family when there is no \'sans\' font family available 
     `)
 })
 
-test('it overrides class \'font-sans\' if enabled in config', async () => {
+test("it overrides class 'font-sans' if enabled in config", async () => {
   const css = await generateCSS(plugins, {
-    corePlugins: ['fontFamily']
+    corePlugins: ['fontFamily'],
   })
 
   expect(css).toMatch('font-family: "Inter", ')
   expect(css).toMatch('font-family: "Inter var", ')
 })
 
-test('it overrides user\'s custom \'font-sans\' configuration', async () => {
-  const css = await generateCSS(plugins, {
-    corePlugins: ['fontFamily'],
-    theme: {
-      fontFamily: {
-        sans: ['FontA', 'FontB']
-      }
+test("it overrides user's custom 'font-sans' configuration", async () => {
+  const css = await generateCSS(
+    plugins,
+    {
+      corePlugins: ['fontFamily'],
+      theme: {
+        fontFamily: {
+          sans: ['FontA', 'FontB'],
+        },
+      },
+      variants: {
+        fontFamily: [],
+      },
     },
-    variants: {
-      fontFamily: []
-    }
-  }, '@tailwind base; @tailwind utilities')
+    '@tailwind base; @tailwind utilities'
+  )
 
   expect(css).toMatchCSS(`
         html {
@@ -85,29 +91,37 @@ test('it overrides user\'s custom \'font-sans\' configuration', async () => {
 })
 
 test('it only adds support for "Inter var" if Intel Family is already specified in config', async () => {
-  const interOnly = await generateCSS(plugins, {
-    corePlugins: ['fontFamily'],
-    theme: {
-      fontFamily: {
-        sans: '"Inter"'
-      }
+  const interOnly = await generateCSS(
+    plugins,
+    {
+      corePlugins: ['fontFamily'],
+      theme: {
+        fontFamily: {
+          sans: '"Inter"',
+        },
+      },
+      variants: {
+        fontFamily: [],
+      },
     },
-    variants: {
-      fontFamily: []
-    }
-  }, '@tailwind base; @tailwind utilities')
+    '@tailwind base; @tailwind utilities'
+  )
 
-  const interAndOthers = await generateCSS(plugins, {
-    corePlugins: ['fontFamily'],
-    theme: {
-      fontFamily: {
-        sans: '"Inter", Roboto, sans-serif'
-      }
+  const interAndOthers = await generateCSS(
+    plugins,
+    {
+      corePlugins: ['fontFamily'],
+      theme: {
+        fontFamily: {
+          sans: '"Inter", Roboto, sans-serif',
+        },
+      },
+      variants: {
+        fontFamily: [],
+      },
     },
-    variants: {
-      fontFamily: []
-    }
-  }, '@tailwind base; @tailwind utilities')
+    '@tailwind base; @tailwind utilities'
+  )
 
   expect(interOnly).toMatchCSS(`
         html {
@@ -155,17 +169,21 @@ test('it only adds support for "Inter var" if Intel Family is already specified 
 })
 
 test('it skips adding Inter Family if "Inter var" is already specified', async () => {
-  const css = await generateCSS(plugins, {
-    corePlugins: ['fontFamily'],
-    theme: {
-      fontFamily: {
-        sans: '"Inter var", sans-serif'
-      }
+  const css = await generateCSS(
+    plugins,
+    {
+      corePlugins: ['fontFamily'],
+      theme: {
+        fontFamily: {
+          sans: '"Inter var", sans-serif',
+        },
+      },
+      variants: {
+        fontFamily: [],
+      },
     },
-    variants: {
-      fontFamily: []
-    }
-  }, '@tailwind base; @tailwind utilities')
+    '@tailwind base; @tailwind utilities'
+  )
 
   expect(css).toMatch('font-family: "Inter var"')
   expect(css).not.toMatch('font-family: "Inter"')

@@ -1,3 +1,3 @@
 expect.extend({
-    toMatchCSS: require('jest-matcher-css')
-  })
+  toMatchCSS: require('jest-matcher-css'),
+})
