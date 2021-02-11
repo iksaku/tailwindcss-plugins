@@ -10,11 +10,6 @@ const shared = {
     marginTop: defaultTheme.spacing[8],
     marginBottom: defaultTheme.spacing[3]
   },
-  'h1,h2': {
-    borderBottomWidth: defaultTheme.borderWidth.DEFAULT,
-    borderColor: colors.coolGray['300'],
-    paddingBottom: defaultTheme.spacing[3],
-  }
 }
 
 module.exports = {
@@ -24,10 +19,16 @@ module.exports = {
 
   theme: {
     extend: {
-      typography: theme => ({
+      typography: {
         DEFAULT: {
           css: {
             color: colors.coolGray['900'],
+
+            '*:is(h1,h2,h3,h4,h5,h6)[id]': {
+              a: {
+                paddingLeft: defaultTheme.spacing[2],
+              },
+            },
 
             a: {
               color: colors.blue['700'],
@@ -35,6 +36,12 @@ module.exports = {
               '&:hover,&:focus': {
                 color: colors.blue['900']
               },
+            },
+
+            'h1,h2': {
+              borderBottomWidth: defaultTheme.borderWidth.DEFAULT,
+              borderColor: colors.coolGray['300'],
+              paddingBottom: defaultTheme.spacing[3],
             },
 
             ...shared
@@ -60,7 +67,7 @@ module.exports = {
             ...shared
           }
         }
-      })
+      }
     }
   }
 }
