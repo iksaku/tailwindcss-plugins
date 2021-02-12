@@ -1,6 +1,5 @@
 module.exports = [
-  require('./src/borderXY'),
-  require('./src/hocus'),
-  require('./src/markdown'),
-  require('./src/smoothScroll')
+  require('./plugins/borderXY'),
+  require('./plugins/hocus'),
+  require('./plugins/smoothScroll'),
 ]
