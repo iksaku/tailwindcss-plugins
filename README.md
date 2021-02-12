@@ -335,7 +335,7 @@ Google Fonts, or provide them yourself.
 Enable this preset by registering it in your config:
 
 ```js
-// tailwindcss.config.js
+// tailwind.config.js
 module.exports = {
   presets: [require('@iksaku/tailwindcss-plugins/presets/interFontFamily')],
 }
@@ -361,7 +361,7 @@ This preset provides some color and spacing modifications to the default
 Enable this preset by registering it in your config:
 
 ```js
-// tailwindcss.config.js
+// tailwind.config.js
 module.exports = {
   presets: [require('@iksaku/tailwindcss-plugins/presets/interFontFamily')],
 }
@@ -371,7 +371,7 @@ Since [v3.1 of this plugin](https://github.com/iksaku/tailwindcss-plugins/releas
 enabling the `dark` variant for the typography plugin as follows:
 
 ```js
-// tailwindcss.config.js
+// tailwind.config.js
 modufle.exports = {
   variants: {
     extend: {
