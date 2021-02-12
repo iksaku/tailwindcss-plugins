@@ -1,6 +1,6 @@
 {
   "name": "@iksaku/tailwindcss-plugins",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "Personal collection of TailwindCSS plugins",
   "main": "index.js",
   "repository": "https://github.com/iksaku/tailwindcss-plugins",
